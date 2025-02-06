@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: native # 显式启用本地文件系统支持
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        #git:
+        #  uri: https://github.com/your-github-repo/config-repo.git
+        #  search-paths: '{application}'
+        native:
+          search-locations: file:///E:/IDEA_Projects/hxy-springcloud-demo/config-repo
