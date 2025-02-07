@@ -21,12 +21,17 @@
 * Hystrix
   * 启动eureka-server（服务注册中心） http://localhost:8761/
   * 启动eureka-client-2（服务提供者） http://localhost:8082/hello
-  * 启动hystrix（服务提供者），
-    访问 http://localhost:8083/hello 随机失败，可以观察到熔断器的触发和恢复。
-* Hystrix Dashboard
-  * 访问 http://localhost:8084/hystrix ，输入流地址 http://localhost:8083/actuator/hystrix.stream 查看实时监控数据。
-  * 通过 Turbine 查看监控数据。
+  * 启动hystrix，访问 http://localhost:8083/hello 随机失败，可以观察到熔断器的触发和恢复。
+
 
 * 
 # 监控
 * Spring Boot Actuator
+* Hystrix Dashboard
+  * 启动两个 hystrix 实例（端口分别为 8083 和 8073）
+  * 启动 turbine，目的是将多个 Hystrix 流聚合到一个地方，方便在 Hystrix Dashboard 中集中监控多个服务的熔断器状态。
+  * 启动 hystrix-dashboard
+  * 访问 http://localhost:8084/hystrix ，
+    * 输入 http://localhost:8083/actuator/hystrix.stream 查看一个 hystrix 实例的监控数据。
+    * 输入 http://localhost:8085/turbine.stream 可以看到两个 hystrix 实例的聚合监控数据。
+  * 
