@@ -1,0 +1,18 @@
+#Spring Boot 2.4+ 移除了bootstrap.yml的默认支持，改用spring.config.import属性导入远程配置。
+
+spring:
+  application:
+    name: config-client
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: dev
+      fail-fast: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
