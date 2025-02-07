@@ -1,0 +1,16 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: turbine
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+turbine:
+  # 指定要监控的服务列表，多个之间用逗号隔开。
+  app-config: hystrix
+  cluster-name-expression: "'default'"
