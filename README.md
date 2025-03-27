@@ -4,6 +4,7 @@
 
 # 服务注册和发现
 * Spring Cloud Netflix Eureka
+  * Spring Cloud 2022移除了Eureka支持
   * 启动eureka-server（服务注册中心） http://localhost:8761/
   * 启动eureka-client（服务提供者） http://localhost:8081/hello
   * 启动eureka-client-2（服务提供者） http://localhost:8082/hello
@@ -12,7 +13,7 @@
       * @LoadBalanced 将RestTemplate增强为一个支持负载均衡的客户端工具。具体来说，它会与 Spring Cloud LoadBalancer（或 Ribbon，如果是旧版本）集成，使得客户端能够根据服务名称从 Eureka Server 获取服务实例列表，并自动选择一个实例进行调用。
     * 使用Feign Client实现 http://localhost:8081/call/another-service?useFeign=true
       * Feign 的接口定义方式（通过 @FeignClient 注解）已经隐含了服务发现和负载均衡的逻辑。
-  * 
+* Spring Cloud Consul
 
 # 配置中心
 * Spring Cloud Config
@@ -24,7 +25,11 @@
   * 启动hystrix，访问 http://localhost:8083/hello 随机失败，可以观察到熔断器的触发和恢复。
 
 
-* 
+# 网关
+* Spring Cloud Gateway
+  * 启动gateway，访问 http://localhost:8085/v1/hello 和 http://localhost:8085/v2/hello 测试路由是否正常工作。
+  * 使用 Redis 进行限流
+  
 # 监控
 * Spring Boot Actuator
 * Hystrix Dashboard
